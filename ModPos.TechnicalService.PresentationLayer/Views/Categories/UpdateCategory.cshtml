@@ -41,10 +41,9 @@
             };
 
             $.ajax({
-                url: "/Categories/UpdateCategoryData",
-                type:"POST",
-                dataType:"json",
-                contentType:"application/json",
+                url: "https://localhost:44301/api/Categories/UpdateCategory",
+                type:"PUT",
+                contentType: "application/json",
                 data:JSON.stringify(putData),
                 success:function(data){
                     window.location.href="/Categories/CategoryList";

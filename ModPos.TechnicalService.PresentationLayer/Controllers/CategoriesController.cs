@@ -33,19 +33,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
             }
             return RedirectToAction("CategoryList");
         }
-        [HttpPost]
-        public async Task<IActionResult> UpdateCategoryData([FromBody] UpdateCategoryDto updateCategoryDto)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateCategoryDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44301/api/Categories/UpdateCategory", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("CategoryList");
-            }
-            return View();
-        }
+        
 
         public IActionResult DeleteCategory(int id)
         {
