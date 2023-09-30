@@ -11,14 +11,12 @@ namespace ModPos.TechnicalService.DtoLayer.Dtos.ServiceMovementsDto
     public class ResultServiceMovementsDto
     {
         public int ServiceMovementsId { get; set; }
-        public int ServiceId { get; set; }
         public ResultServiceDto Service { get; set; }
-        public int ProductId { get; set; }
         public ResultProductDto Product { get; set; }
         public int ProductQuantity { get; set; }
         public decimal ServicePrice { get; set; }
         public decimal Currency { get; set; }
-        public decimal ServiceLineAmount { get => ProductQuantity * ServicePrice * Currency; }
-        public string ServiceTransactionType { get; set; }
+        public decimal ServiceLineAmount { get => Math.Round( ProductQuantity * ServicePrice * Currency,2); }
+        public string ServiceTransactionType { get; set; }  
     }
 }

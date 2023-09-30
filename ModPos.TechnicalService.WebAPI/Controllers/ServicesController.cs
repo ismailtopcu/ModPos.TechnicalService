@@ -22,16 +22,16 @@ namespace ModPos.TechnicalService.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllServices()
+        public async Task<IActionResult> GetAllServices(int? customerId)
         {
-            var values = await _serviceService.TGetListAsync();
+            var values = await _serviceService.TGetServiceList(customerId);
             
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetServiceById(int id)
         {
-            var value = await _serviceService.TGetByIdAsync(id);
+            var value = await _serviceService.TGetServiceById(id);
             return Ok(value);
         }
         [HttpPost]
@@ -59,7 +59,19 @@ namespace ModPos.TechnicalService.WebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateService(UpdateServiceDto updateServiceDto)
         {
-            var value = _mapper.Map<Service>(updateServiceDto);
+            //var value = _mapper.Map<Service>(updateServiceDto);
+            var value = new Service
+            {
+                ServiceId = updateServiceDto.ServiceId,
+                ServiceCode = updateServiceDto.ServiceCode,
+                ServiceNumber = updateServiceDto.ServiceNumber,
+                UpdatedDate = DateTime.Now,
+                CustomerId = updateServiceDto.CustomerId,
+                ServiceDescription = updateServiceDto.ServiceDescription,
+                ServiceDate = updateServiceDto.ServiceDate,
+                ServiceStatus = updateServiceDto.ServiceStatus
+            };
+
             await _serviceService.TUpdateAsync(value);
             return Ok();
         }

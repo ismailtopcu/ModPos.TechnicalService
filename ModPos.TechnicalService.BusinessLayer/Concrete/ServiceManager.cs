@@ -1,5 +1,6 @@
 ﻿using ModPos.TechnicalService.BusinessLayer.Abstract;
 using ModPos.TechnicalService.DataAccessLayer.Abstract;
+using ModPos.TechnicalService.DtoLayer.Dtos.ServiceDto;
 using ModPos.TechnicalService.EntityLayer.Concrete;
 
 namespace ModPos.TechnicalService.BusinessLayer.Concrete
@@ -26,6 +27,16 @@ namespace ModPos.TechnicalService.BusinessLayer.Concrete
         public async Task<List<Service>> TGetListAsync()
         {
             return await _serviceDal.GetListAsync();
+        }
+
+        public async Task<ResultServiceDto> TGetServiceById(int id)
+        {
+            return await _serviceDal.GetServiceById(id);
+        }
+
+        public async Task<List<ResultServiceDto>> TGetServiceList(int? customerId)
+        {
+            return await _serviceDal.GetServiceList(customerId);
         }
 
         public async Task TInsertAsync(Service t)

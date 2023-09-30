@@ -1,5 +1,6 @@
 ﻿using ModPos.TechnicalService.BusinessLayer.Abstract;
 using ModPos.TechnicalService.DataAccessLayer.Abstract;
+using ModPos.TechnicalService.DtoLayer.Dtos.ProductDto;
 using ModPos.TechnicalService.EntityLayer.Concrete;
 
 namespace ModPos.TechnicalService.BusinessLayer.Concrete
@@ -26,6 +27,16 @@ namespace ModPos.TechnicalService.BusinessLayer.Concrete
         public async Task<List<Product>> TGetListAsync()
         {
             return await _productDal.GetListAsync();
+        }
+
+        public async Task<ResultProductDto> TGetProductById(int id)
+        {
+            return await _productDal.GetProductById(id);
+        }
+
+        public async Task<List<ResultProductDto>> TGetProductList()
+        {
+            return await _productDal.GetProductList();
         }
 
         public async Task TInsertAsync(Product t)

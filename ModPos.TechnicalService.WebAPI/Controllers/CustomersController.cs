@@ -23,13 +23,13 @@ namespace ModPos.TechnicalService.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCustomers()
         {
-            var values= await _customerService.TGetListAsync();
+            var values= await _customerService.TGetCustomerList();
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomerById(int id)
         {
-            var value = await _customerService.TGetByIdAsync(id);
+            var value = await _customerService.TGetCustomerById(id);
             return Ok(value);
         }
         [HttpPost]

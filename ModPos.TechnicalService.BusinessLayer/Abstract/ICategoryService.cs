@@ -4,6 +4,6 @@ namespace ModPos.TechnicalService.BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
-
+        
     }
 }

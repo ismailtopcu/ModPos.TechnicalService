@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ModPos.TechnicalService.DtoLayer\ModPos.TechnicalService.DtoLayer.csproj" />
     <ProjectReference Include="..\ModPos.TechnicalService.EntityLayer\ModPos.TechnicalService.EntityLayer.csproj" />
   </ItemGroup>
 

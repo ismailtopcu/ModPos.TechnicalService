@@ -14,6 +14,10 @@ namespace ModPos.TechnicalService.EntityLayer.Concrete
         public string PhoneNumber { get; set; }
         public string CustomerEmail { get; set; }
         public string Address { get; set; }
-        public List<Service> Services { get; set; }
+        public ICollection<Service> Services { get; set; }
+        public Customer()
+        {
+            Services = new HashSet<Service>();
+        }
     }
 }

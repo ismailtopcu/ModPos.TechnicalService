@@ -142,8 +142,8 @@ namespace ModPos.TechnicalService.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ServiceTotalAmount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ServiceId");
 
@@ -172,9 +172,6 @@ namespace ModPos.TechnicalService.DataAccessLayer.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("ServiceLineAmount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<decimal>("ServicePrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -194,7 +191,7 @@ namespace ModPos.TechnicalService.DataAccessLayer.Migrations
             modelBuilder.Entity("ModPos.TechnicalService.EntityLayer.Concrete.Product", b =>
                 {
                     b.HasOne("ModPos.TechnicalService.EntityLayer.Concrete.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -230,11 +227,6 @@ namespace ModPos.TechnicalService.DataAccessLayer.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Service");
-                });
-
-            modelBuilder.Entity("ModPos.TechnicalService.EntityLayer.Concrete.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("ModPos.TechnicalService.EntityLayer.Concrete.Customer", b =>

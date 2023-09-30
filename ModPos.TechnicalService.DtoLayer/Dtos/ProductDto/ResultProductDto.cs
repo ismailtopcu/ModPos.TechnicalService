@@ -11,8 +11,7 @@ namespace ModPos.TechnicalService.DtoLayer.Dtos.ProductDto
     {
         public int ProductId { get; set; }
         public string ProductCode { get; set; }
-        public int CategoryId { get; set; }
-        public ResultCategoryDto Category { get; set; }
+        public  ResultCategoryDto Category { get; set; }
         public string ProductName { get; set; }
         public string ProductSerialNumber { get; set; }
         public string ProductBarcode { get; set; }

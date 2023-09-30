@@ -1,0 +1,46 @@
+﻿@model List<ResultCustomerDto>
+@{
+    ViewData["Title"] = "CustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="card-title">
+	<h4>Müşteri Listesi</h4>
+</div>
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Müşteri Adı</th>
+				<th>Müşteri Soyadı</th>
+				<th>Telefon Numarası</th>
+				<th>Müşteri Email</th>
+				<th>Adres</th>				
+				<th>Sil</th>
+				<th>Güncelle</th>
+				<th>Servisler</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				count++;
+				<tr>
+					<th>@count</th>
+					<td>@item.CustomerName </td>
+					<td>@item.CustomerSurname</td>
+					<td>@item.PhoneNumber</td>
+					<td>@item.CustomerEmail</td>
+					<td>@item.Address</td>
+					<td><a href="/Customers/deleteCustomer/@item.CustomerId" class="btn btn-danger">Sil</a></td>
+					<td><a href="/Customers/updateCustomer/@item.CustomerId" class="btn btn-success">Güncelle</a></td>
+					<td><a href="/Services/ServiceList?customerId=@item.CustomerId" class="btn btn-info">Servislere Git</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a href="/Customers/CreateCustomer/" class="btn btn-primary" style="float:left">Müşteri Ekle</a>
+</div>
+

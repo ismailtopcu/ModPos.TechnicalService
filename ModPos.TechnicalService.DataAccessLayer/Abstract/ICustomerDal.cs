@@ -1,4 +1,6 @@
-﻿using ModPos.TechnicalService.EntityLayer.Concrete;
+﻿using ModPos.TechnicalService.DtoLayer.Dtos.CustomerDto;
+using ModPos.TechnicalService.DtoLayer.Dtos.ProductDto;
+using ModPos.TechnicalService.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,8 @@ namespace ModPos.TechnicalService.DataAccessLayer.Abstract
 {
     public interface ICustomerDal:IGenericDal<Customer>
     {
+        Task<List<ResultCustomerDto>> GetCustomerList();
+        Task<ResultCustomerDto> GetCustomerById(int id);
     }
     
 }

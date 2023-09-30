@@ -1,0 +1,53 @@
+﻿@model List<ResultServiceDto>
+@{
+	ViewData["Title"] = "ServiceList";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	int count = 0;
+}
+
+<div class="card-title">
+	<h4>Servisler</h4>
+</div>
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Servis Kodu</th>
+				<th>Servis Numarası</th>
+				<th>Servis Tarihi</th>
+				<th>Müşteri Adı Soyadı</th>
+				<th>Servis Açıklaması</th>
+				<th>Müşteri Adresi</th>
+				<th>Servis Genel Tutarı</th>
+				<th>Servis Durumu</th>
+				<th>Servis Hareketleri</th>
+				<th>Sil</th>
+				<th>Güncelle</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				count++;
+				<tr>
+					<th>@count</th>
+					<td>@item.ServiceCode </td>
+					<td>@item.ServiceNumber</td>
+					<td>@item.ServiceDate</td>
+					<td>@item.Customer.CustomerName @item.Customer.CustomerSurname</td>
+					<td>@item.ServiceDescription</td>
+					<td>@item.Customer.Address</td>
+					<td>@item.ServiceTotalAmount₺</td>
+					<td>@item.ServiceStatus</td>
+					<td><a type="button" class="btn btn-info" href="/ServiceMovements/ServiceMovementsList/@item.ServiceId">Hareketler</a></td>
+					<td><a href="/Services/deleteService/@item.ServiceId" class="btn btn-danger">Sil</a></td>
+					<td><a href="/Services/updateService/@item.ServiceId" class="btn btn-success">Güncelle</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a href="/Services/CreateService?customerId=@ViewBag.CustomerId" class="btn btn-primary" style="float:left">Servis Kaydı Oluştur</a>
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model List<ResultProductDto>
+@{
+	ViewData["Title"] = "ProductList";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	int count = 0;
+}
+
+<div class="card-title">
+	<h4>Ürün Listesi</h4>
+</div>
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Ürün Kodu</th>
+				<th>Kategori</th>
+				<th>Ürün Adı</th>
+				<th>Seri No</th>
+				<th>Barkod</th>
+				<th>Alış Fiyatı</th>
+				<th>Satış Fiyatı</th>
+				<th>Sil</th>
+				<th>Güncelle</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				count++;
+				<tr>
+					<th>@count</th>
+					<td>@item.ProductCode </td>
+					<td>@item.Category.CategoryName</td>
+					<td>@item.ProductName</td>
+					<td>@item.ProductSerialNumber</td>
+					<td>@item.ProductBarcode</td>
+					<td>@item.PurchasePrice</td>
+					<td>@item.SellingPrice</td>
+					<td><a href="/Products/deleteproduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
+					<td><a href="/Products/updateproduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<a href="/Products/CreateProduct/" class="btn btn-primary" style="float:left">Ürün Ekle</a>
+</div>
+

@@ -1,5 +1,7 @@
 ﻿using ModPos.TechnicalService.BusinessLayer.Abstract;
 using ModPos.TechnicalService.DataAccessLayer.Abstract;
+using ModPos.TechnicalService.DtoLayer.Dtos.ServiceDto;
+using ModPos.TechnicalService.DtoLayer.Dtos.ServiceMovementsDto;
 using ModPos.TechnicalService.EntityLayer.Concrete;
 
 namespace ModPos.TechnicalService.BusinessLayer.Concrete
@@ -28,7 +30,22 @@ namespace ModPos.TechnicalService.BusinessLayer.Concrete
             return await _serviceMovementsDal.GetListAsync();
         }
 
-        public async Task TInsertAsync(ServiceMovements t)
+		public async Task<ResultServiceMovementsDto> TGetServiceMovementsById(int id)
+		{
+			return await _serviceMovementsDal.GetServiceMovementsById(id);
+		}
+
+		public async Task<List<ResultServiceMovementsDto>> TGetServiceMovementsByServiceId(int serviceId)
+		{
+			return await _serviceMovementsDal.GetServiceMovementsByServiceId(serviceId);
+		}
+
+		public async Task<List<ResultServiceMovementsDto>> TGetServiceMovementsList()
+		{
+			return await _serviceMovementsDal.GetServiceMovementsList();
+		}
+
+		public async Task TInsertAsync(ServiceMovements t)
         {
             await _serviceMovementsDal.InsertAsync(t);
         }

@@ -9,5 +9,13 @@
         public decimal ServicePrice { get; set; }
         public decimal Currency { get; set; }
         public string ServiceTransactionType { get; set; }
+        public List<ProductInfoDto> Products { get; set; }
+
+    }
+
+    public class ProductInfoDto
+    {
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
     }
 }

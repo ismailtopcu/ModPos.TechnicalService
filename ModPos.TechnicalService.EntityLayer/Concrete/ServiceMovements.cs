@@ -10,7 +10,6 @@
         public int ProductQuantity { get; set; }
         public decimal ServicePrice { get; set; }
         public decimal Currency { get; set; }
-        public decimal ServiceLineAmount { get; set; }
         public string ServiceTransactionType { get; set; }
     }
 }

@@ -23,15 +23,22 @@ namespace ModPos.TechnicalService.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllServiceMovements()
         {
-            var values = await _serviceMovementsService.TGetListAsync();
+            var values = await _serviceMovementsService.TGetServiceMovementsList();
             return Ok(values);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetServiceMovementsById(int id)
         {
-            var value = await _serviceMovementsService.TGetByIdAsync(id);
+            var value = await _serviceMovementsService.TGetServiceMovementsById(id);
             return Ok(value);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetServiceMovementsByServiceId(int id)
+        {
+            var value = await _serviceMovementsService.TGetServiceMovementsByServiceId(id);
+            return Ok(value);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateServiceMovements(CreateServiceMovementsDto createServiceMovementsDto)
         {

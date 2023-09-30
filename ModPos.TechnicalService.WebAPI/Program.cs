@@ -2,6 +2,7 @@ using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using ModPos.TechnicalService.BusinessLayer.DependencyResolvers.Autofac;
 using ModPos.TechnicalService.DataAccessLayer.Concrete;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,16 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddCors(opt =>
+{
+	opt.AddPolicy("ModPosCors", opts =>
+	{
+		opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+	});
+});
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(opt=>opt.SerializerSettings.ReferenceLoopHandling=ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -34,7 +42,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("ModPosCors");
 app.UseAuthorization();
 
 app.MapControllers();
