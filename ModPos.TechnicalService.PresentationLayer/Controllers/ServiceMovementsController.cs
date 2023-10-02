@@ -40,7 +40,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
                 var values = JsonConvert.DeserializeObject<UpdateServiceMovementsDto>(jsonData);
                 return View(values);
             }
-            return RedirectToAction("ServiceMovementsList");
+            return RedirectToAction("ServiceList","Services");
         }
         [HttpPost]
         public async Task<IActionResult> UpdateServiceMovements(UpdateServiceMovementsDto updateServiceMovementsDto)
@@ -51,7 +51,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
             var responseMessage = await client.PutAsync("https://localhost:44301/api/ServiceMovements/UpdateServiceMovements", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ServiceMovementsList");
+                return RedirectToAction("ServiceMovementsList", new { id = updateServiceMovementsDto.ServiceId });
             }
             return View();
         }
@@ -62,7 +62,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
             var responseMessage = await client.DeleteAsync("https://localhost:44301/api/ServiceMovements/DeleteServiceMovements?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ServiceMovementsList");
+                return RedirectToAction("ServiceList", "Services");
             }
             return View();
         }
@@ -81,7 +81,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
             var respMessage = await client.PostAsync("https://localhost:44301/api/ServiceMovements/CreateServiceMovements", content);
             if (respMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ServiceMovementsList");
+                return RedirectToAction("ServiceMovementsList", new { id = createServiceMovementsDto.ServiceId });
             }
             return View();
         }

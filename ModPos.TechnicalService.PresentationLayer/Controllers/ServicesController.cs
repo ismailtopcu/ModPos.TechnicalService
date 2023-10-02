@@ -68,17 +68,9 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateService(int? customerId)
+        public IActionResult CreateService()
 		{
-			ViewBag.CustomerId = customerId;
-			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync("https://localhost:44301/api/Customers/GetAllCustomers");
-			if (responseMessage.IsSuccessStatusCode)
-			{
-				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultCustomerDto>>(jsonData);
-				return View(values);
-			}
+			
 			return View();
         }
 

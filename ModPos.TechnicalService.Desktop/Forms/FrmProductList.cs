@@ -31,8 +31,21 @@ namespace ModPos.TechnicalService.Desktop.Forms
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                gridProductList.DataSource = values;
+                var products = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
+                var transformedProducts = from p in products
+                                          select new
+                                          {
+                                              p.ProductId,
+                                              p.ProductCode,
+                                              p.ProductName,
+                                              p.ProductBarcode,
+                                              p.ProductSerialNumber,
+                                              Category = p.Category.CategoryName,
+                                              p.PurchasePrice,
+                                              p.SellingPrice
+                                          };
+                
+                gridProductList.DataSource = transformedProducts.ToList();
             }
             else
             {
@@ -44,6 +57,7 @@ namespace ModPos.TechnicalService.Desktop.Forms
             {
                 var categoriesJsonData = await categoriesResponse.Content.ReadAsStringAsync();
                 var categories = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(categoriesJsonData);
+                lookUpEdit1.Properties.NullText = "Kategori Seçiniz";
                 lookUpEdit1.Properties.DataSource = categories;
             }
             else
@@ -59,8 +73,8 @@ namespace ModPos.TechnicalService.Desktop.Forms
             string productSerialNumber = TxtProductSerialNumber.Text;
             string productBarcode = TxtProductBarcode.Text;
             string productCategoryId = lookUpEdit1.EditValue.ToString();
-            decimal purchasePrice = Convert.ToDecimal(TxtPurchasePrice.Text);
-            decimal sellingPrice = Convert.ToDecimal(TxtSellingPrice.Text);
+            decimal purchasePrice = decimal.Parse(TxtPurchasePrice.Text);
+            decimal sellingPrice = decimal.Parse(TxtSellingPrice.Text);
 
             CreateProductDto createProductDto = new CreateProductDto
             {
@@ -96,8 +110,22 @@ namespace ModPos.TechnicalService.Desktop.Forms
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                gridProductList.DataSource = values;
+                var products = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
+
+                var transformedProducts = from p in products
+                                          select new
+                                          {
+                                              p.ProductId,
+                                              p.ProductCode,
+                                              p.ProductName,
+                                              p.ProductBarcode,
+                                              p.ProductSerialNumber,
+                                              Category = p.Category.CategoryName,
+                                              p.PurchasePrice,
+                                              p.SellingPrice
+                                          };
+
+                gridProductList.DataSource = transformedProducts.ToList();
             }
             else
             {
@@ -141,8 +169,8 @@ namespace ModPos.TechnicalService.Desktop.Forms
             string productSerialNumber = TxtProductSerialNumber.Text;
             string productBarcode = TxtProductBarcode.Text;
             string productCategoryId = lookUpEdit1.EditValue.ToString();
-            decimal purchasePrice = Convert.ToDecimal(TxtPurchasePrice.Text);
-            decimal sellingPrice = Convert.ToDecimal(TxtSellingPrice.Text);
+            decimal purchasePrice = decimal.Parse(TxtPurchasePrice.Text);
+            decimal sellingPrice = decimal.Parse(TxtSellingPrice.Text);
 
             UpdateProductDto updateProductDto = new UpdateProductDto
             {
@@ -161,7 +189,7 @@ namespace ModPos.TechnicalService.Desktop.Forms
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage responseMessage = await client.PutAsJsonAsync($"api/Products/UpdateProduct", updateProductDto);
+            HttpResponseMessage responseMessage = await client.PutAsJsonAsync("api/Products/UpdateProduct", updateProductDto);
             if (responseMessage.IsSuccessStatusCode)
             {
                 MessageBox.Show("Ürün Başarıyla Güncellendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -32,13 +32,13 @@ partial class Form1
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
         ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
         BtnProductListForm = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-        barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+        BtnNewProduct = new DevExpress.XtraBars.BarButtonItem();
+        BtnCategoryList = new DevExpress.XtraBars.BarButtonItem();
+        BtnCreateCategory = new DevExpress.XtraBars.BarButtonItem();
+        BtnCustomerList = new DevExpress.XtraBars.BarButtonItem();
+        BtnCustomerCreate = new DevExpress.XtraBars.BarButtonItem();
+        BtnServiceList = new DevExpress.XtraBars.BarButtonItem();
+        BtnServiceCreate = new DevExpress.XtraBars.BarButtonItem();
         HomePage = new DevExpress.XtraBars.Ribbon.RibbonPage();
         ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
         ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -52,12 +52,12 @@ partial class Form1
         // ribbonControl1
         // 
         ribbonControl1.ExpandCollapseItem.Id = 0;
-        ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, BtnProductListForm, barButtonItem2, barButtonItem3, barButtonItem4, barButtonItem5, barButtonItem6, barButtonItem7, barButtonItem8 });
+        ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, BtnProductListForm, BtnNewProduct, BtnCategoryList, BtnCreateCategory, BtnCustomerList, BtnCustomerCreate, BtnServiceList, BtnServiceCreate });
         ribbonControl1.Location = new Point(0, 0);
         ribbonControl1.MaxItemId = 9;
         ribbonControl1.Name = "ribbonControl1";
         ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { HomePage });
-        ribbonControl1.Size = new Size(1644, 150);
+        ribbonControl1.Size = new Size(1444, 150);
         // 
         // BtnProductListForm
         // 
@@ -68,61 +68,68 @@ partial class Form1
         BtnProductListForm.Name = "BtnProductListForm";
         BtnProductListForm.ItemClick += BtnProductListForm_ItemClick;
         // 
-        // barButtonItem2
+        // BtnNewProduct
         // 
-        barButtonItem2.Caption = "Ürün Ekle";
-        barButtonItem2.Id = 2;
-        barButtonItem2.ImageOptions.Image = (Image)resources.GetObject("barButtonItem2.ImageOptions.Image");
-        barButtonItem2.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem2.ImageOptions.LargeImage");
-        barButtonItem2.Name = "barButtonItem2";
+        BtnNewProduct.Caption = "Ürün Ekle";
+        BtnNewProduct.Id = 2;
+        BtnNewProduct.ImageOptions.Image = (Image)resources.GetObject("BtnNewProduct.ImageOptions.Image");
+        BtnNewProduct.ImageOptions.LargeImage = (Image)resources.GetObject("BtnNewProduct.ImageOptions.LargeImage");
+        BtnNewProduct.Name = "BtnNewProduct";
+        BtnNewProduct.ItemClick += BtnNewProduct_ItemClick;
         // 
-        // barButtonItem3
+        // BtnCategoryList
         // 
-        barButtonItem3.Caption = "Kategori Listesi";
-        barButtonItem3.Id = 3;
-        barButtonItem3.ImageOptions.Image = (Image)resources.GetObject("barButtonItem3.ImageOptions.Image");
-        barButtonItem3.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem3.ImageOptions.LargeImage");
-        barButtonItem3.Name = "barButtonItem3";
+        BtnCategoryList.Caption = "Kategori Listesi";
+        BtnCategoryList.Id = 3;
+        BtnCategoryList.ImageOptions.Image = (Image)resources.GetObject("BtnCategoryList.ImageOptions.Image");
+        BtnCategoryList.ImageOptions.LargeImage = (Image)resources.GetObject("BtnCategoryList.ImageOptions.LargeImage");
+        BtnCategoryList.Name = "BtnCategoryList";
+        BtnCategoryList.ItemClick += BtnCategoryList_ItemClick;
         // 
-        // barButtonItem4
+        // BtnCreateCategory
         // 
-        barButtonItem4.Caption = "Kategori Ekle";
-        barButtonItem4.Id = 4;
-        barButtonItem4.ImageOptions.Image = (Image)resources.GetObject("barButtonItem4.ImageOptions.Image");
-        barButtonItem4.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem4.ImageOptions.LargeImage");
-        barButtonItem4.Name = "barButtonItem4";
+        BtnCreateCategory.Caption = "Kategori Ekle";
+        BtnCreateCategory.Id = 4;
+        BtnCreateCategory.ImageOptions.Image = (Image)resources.GetObject("BtnCreateCategory.ImageOptions.Image");
+        BtnCreateCategory.ImageOptions.LargeImage = (Image)resources.GetObject("BtnCreateCategory.ImageOptions.LargeImage");
+        BtnCreateCategory.Name = "BtnCreateCategory";
+        BtnCreateCategory.ItemClick += BtnCreateCategory_ItemClick;
         // 
-        // barButtonItem5
+        // BtnCustomerList
         // 
-        barButtonItem5.Caption = "Müşteri Listesi";
-        barButtonItem5.Id = 5;
-        barButtonItem5.ImageOptions.Image = (Image)resources.GetObject("barButtonItem5.ImageOptions.Image");
-        barButtonItem5.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem5.ImageOptions.LargeImage");
-        barButtonItem5.Name = "barButtonItem5";
+        BtnCustomerList.Caption = "Müşteri Listesi";
+        BtnCustomerList.Id = 5;
+        BtnCustomerList.ImageOptions.Image = (Image)resources.GetObject("BtnCustomerList.ImageOptions.Image");
+        BtnCustomerList.ImageOptions.LargeImage = (Image)resources.GetObject("BtnCustomerList.ImageOptions.LargeImage");
+        BtnCustomerList.Name = "BtnCustomerList";
+        BtnCustomerList.ItemClick += BtnCustomerList_ItemClick;
         // 
-        // barButtonItem6
+        // BtnCustomerCreate
         // 
-        barButtonItem6.Caption = "Müşteri Ekle";
-        barButtonItem6.Id = 6;
-        barButtonItem6.ImageOptions.Image = (Image)resources.GetObject("barButtonItem6.ImageOptions.Image");
-        barButtonItem6.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem6.ImageOptions.LargeImage");
-        barButtonItem6.Name = "barButtonItem6";
+        BtnCustomerCreate.Caption = "Müşteri Ekle";
+        BtnCustomerCreate.Id = 6;
+        BtnCustomerCreate.ImageOptions.Image = (Image)resources.GetObject("BtnCustomerCreate.ImageOptions.Image");
+        BtnCustomerCreate.ImageOptions.LargeImage = (Image)resources.GetObject("BtnCustomerCreate.ImageOptions.LargeImage");
+        BtnCustomerCreate.Name = "BtnCustomerCreate";
+        BtnCustomerCreate.ItemClick += BtnCustomerCreate_ItemClick;
         // 
-        // barButtonItem7
+        // BtnServiceList
         // 
-        barButtonItem7.Caption = "Servis Listesini Getir";
-        barButtonItem7.Id = 7;
-        barButtonItem7.ImageOptions.Image = (Image)resources.GetObject("barButtonItem7.ImageOptions.Image");
-        barButtonItem7.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem7.ImageOptions.LargeImage");
-        barButtonItem7.Name = "barButtonItem7";
+        BtnServiceList.Caption = "Servis Listesini Getir";
+        BtnServiceList.Id = 7;
+        BtnServiceList.ImageOptions.Image = (Image)resources.GetObject("BtnServiceList.ImageOptions.Image");
+        BtnServiceList.ImageOptions.LargeImage = (Image)resources.GetObject("BtnServiceList.ImageOptions.LargeImage");
+        BtnServiceList.Name = "BtnServiceList";
+        BtnServiceList.ItemClick += BtnServiceList_ItemClick;
         // 
-        // barButtonItem8
+        // BtnServiceCreate
         // 
-        barButtonItem8.Caption = "Servis Oluştur";
-        barButtonItem8.Id = 8;
-        barButtonItem8.ImageOptions.Image = (Image)resources.GetObject("barButtonItem8.ImageOptions.Image");
-        barButtonItem8.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem8.ImageOptions.LargeImage");
-        barButtonItem8.Name = "barButtonItem8";
+        BtnServiceCreate.Caption = "Servis Oluştur";
+        BtnServiceCreate.Id = 8;
+        BtnServiceCreate.ImageOptions.Image = (Image)resources.GetObject("BtnServiceCreate.ImageOptions.Image");
+        BtnServiceCreate.ImageOptions.LargeImage = (Image)resources.GetObject("BtnServiceCreate.ImageOptions.LargeImage");
+        BtnServiceCreate.Name = "BtnServiceCreate";
+        BtnServiceCreate.ItemClick += BtnServiceCreate_ItemClick;
         // 
         // HomePage
         // 
@@ -133,28 +140,28 @@ partial class Form1
         // ribbonPageGroup1
         // 
         ribbonPageGroup1.ItemLinks.Add(BtnProductListForm);
-        ribbonPageGroup1.ItemLinks.Add(barButtonItem2);
+        ribbonPageGroup1.ItemLinks.Add(BtnNewProduct);
         ribbonPageGroup1.Name = "ribbonPageGroup1";
         ribbonPageGroup1.Text = "Ürün";
         // 
         // ribbonPageGroup2
         // 
-        ribbonPageGroup2.ItemLinks.Add(barButtonItem3);
-        ribbonPageGroup2.ItemLinks.Add(barButtonItem4);
+        ribbonPageGroup2.ItemLinks.Add(BtnCategoryList);
+        ribbonPageGroup2.ItemLinks.Add(BtnCreateCategory);
         ribbonPageGroup2.Name = "ribbonPageGroup2";
         ribbonPageGroup2.Text = "Kategori";
         // 
         // ribbonPageGroup3
         // 
-        ribbonPageGroup3.ItemLinks.Add(barButtonItem5);
-        ribbonPageGroup3.ItemLinks.Add(barButtonItem6);
+        ribbonPageGroup3.ItemLinks.Add(BtnCustomerList);
+        ribbonPageGroup3.ItemLinks.Add(BtnCustomerCreate);
         ribbonPageGroup3.Name = "ribbonPageGroup3";
         ribbonPageGroup3.Text = "Müşteri";
         // 
         // ribbonPageGroup4
         // 
-        ribbonPageGroup4.ItemLinks.Add(barButtonItem7);
-        ribbonPageGroup4.ItemLinks.Add(barButtonItem8);
+        ribbonPageGroup4.ItemLinks.Add(BtnServiceList);
+        ribbonPageGroup4.ItemLinks.Add(BtnServiceCreate);
         ribbonPageGroup4.Name = "ribbonPageGroup4";
         ribbonPageGroup4.Text = "Servis";
         // 
@@ -166,12 +173,12 @@ partial class Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1644, 849);
+        ClientSize = new Size(1444, 1021);
         Controls.Add(ribbonControl1);
         IsMdiContainer = true;
         Name = "Form1";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "Form1";
-        WindowState = FormWindowState.Maximized;
         ((System.ComponentModel.ISupportInitialize)ribbonControl1).EndInit();
         ((System.ComponentModel.ISupportInitialize)xtraTabbedMdiManager1).EndInit();
         ResumeLayout(false);
@@ -182,13 +189,13 @@ partial class Form1
 
     private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
     private DevExpress.XtraBars.BarButtonItem BtnProductListForm;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-    private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+    private DevExpress.XtraBars.BarButtonItem BtnNewProduct;
+    private DevExpress.XtraBars.BarButtonItem BtnCategoryList;
+    private DevExpress.XtraBars.BarButtonItem BtnCreateCategory;
+    private DevExpress.XtraBars.BarButtonItem BtnCustomerList;
+    private DevExpress.XtraBars.BarButtonItem BtnCustomerCreate;
+    private DevExpress.XtraBars.BarButtonItem BtnServiceList;
+    private DevExpress.XtraBars.BarButtonItem BtnServiceCreate;
     private DevExpress.XtraBars.Ribbon.RibbonPage HomePage;
     private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;

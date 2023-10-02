@@ -16,5 +16,9 @@ namespace ModPos.TechnicalService.DtoLayer.Dtos.CustomerDto
         public string CustomerEmail { get; set; }
         public string Address { get; set; }
         public List<ResultServiceDto> Services{ get; set; }
+        public string DisplayText
+        {
+            get { return $"{CustomerName} {CustomerSurname}"; }
+        }
     }
 }
