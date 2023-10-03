@@ -42,7 +42,7 @@ namespace ModPos.TechnicalService.WebAPI.Controllers
                 ServiceCode = createServiceDto.ServiceCode,
                 ServiceNumber = createServiceDto.ServiceNumber,
                 ServiceDate = DateTime.Now,
-                CustomerId = createServiceDto.CustomerId,
+                CustomerId = createServiceDto.CustomerId.Value,
                 ServiceDescription = createServiceDto.ServiceDescription,
                 ServiceStatus = "Kabul Edildi"                
             };

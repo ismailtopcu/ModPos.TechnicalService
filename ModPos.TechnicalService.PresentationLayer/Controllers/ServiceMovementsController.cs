@@ -30,7 +30,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> UpdateServiceMovements(int id)
+        public async Task<IActionResult> UpdateServiceMovements(int id,int? serviceId)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44301/api/ServiceMovements/GetServiceMovementsById/" + id);

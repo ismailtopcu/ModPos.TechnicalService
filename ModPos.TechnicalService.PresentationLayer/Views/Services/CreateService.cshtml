@@ -17,7 +17,7 @@
 				<div class="col-lg-6">
 					<input type="text" class="form-control" autocomplete="off" asp-for="ServiceCode" id="ServiceCode" placeholder="Servis kodu giriniz..">
 				</div>
-			</div>
+			</div>			
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label" for="val-currency">
 					Servis Numarası
@@ -26,14 +26,22 @@
 					<input type="text" class="form-control" id="ServiceNumber" asp-for="ServiceNumber" placeholder="Servis numarası giriniz..">
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="col-lg-4 col-form-label" for="val-currency">
-					Müşteri
-				</label>
-				<div class="col-lg-6">
-					<select class="form-control" id="CustomerIdSelect" name="CustomerId"></select>
+			@if (Model.CustomerId==null)
+			{
+				<div class="form-group row">
+					<label class="col-lg-4 col-form-label" for="val-currency">
+						Müşteri
+					</label>
+					<div class="col-lg-6">
+						<select class="form-control" id="CustomerIdSelect" name="CustomerId"></select>
+					</div>
 				</div>
-			</div>
+			}
+			else
+			{
+				<input type="hidden" asp-for="CustomerId" />
+			}
+			
 
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label" for="val-currency">
@@ -68,7 +76,7 @@
 				$.each(customers, function (index, customer) {
 					selectElement.append($("<option>", {
 						value: customer.customerId,
-						text: customer.customerName + " " + customer.customerSurname
+						text: customer.customerId + " " + customer.customerName + " " + customer.customerSurname
 					}));
 				});
 			},

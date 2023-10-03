@@ -41,7 +41,7 @@
 					<td>@item.ServiceLineAmount₺</td>
 					<td>@item.ServiceTransactionType</td>
 					<td><a href="/ServiceMovements/deleteServiceMovements/@item.ServiceMovementsId" class="btn btn-danger">Sil</a></td>
-					<td><a href="/ServiceMovements/updateServiceMovements/@item.ServiceMovementsId" class="btn btn-success">Güncelle</a></td>
+					<td><a href="/ServiceMovements/updateServiceMovements/@item.ServiceMovementsId?serviceId=@item.Service.ServiceId" class="btn btn-success">Güncelle</a></td>
 				</tr>
 			}
 		</tbody>

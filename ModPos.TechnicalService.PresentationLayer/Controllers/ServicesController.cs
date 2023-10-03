@@ -68,10 +68,13 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateService()
+        public IActionResult CreateService(int? customerId)
 		{
-			
-			return View();
+            CreateServiceDto value = new CreateServiceDto()
+            {
+                CustomerId=customerId                
+            };
+			return View(value);
         }
 
         [HttpPost]
@@ -85,7 +88,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
             {
                 return RedirectToAction("ServiceList");
             }
-            return View();
+            return View(createServiceDto);
         }
     }
 }
