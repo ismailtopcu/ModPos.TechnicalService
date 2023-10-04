@@ -24,8 +24,4 @@
     <ProjectReference Include="..\ModPos.TechnicalService.EntityLayer\ModPos.TechnicalService.EntityLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

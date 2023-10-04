@@ -30,8 +30,9 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateService(int id)
+        public async Task<IActionResult> UpdateService(int id,int? customerId)
         {
+            ViewBag.CustomerId=customerId;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44301/api/Services/GetServiceById/" + id);
             if (responseMessage.IsSuccessStatusCode)

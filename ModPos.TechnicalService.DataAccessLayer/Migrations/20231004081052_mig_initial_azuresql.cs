@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ModPos.TechnicalService.DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_initial : Migration
+    public partial class mig_initial_azuresql : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -75,10 +75,10 @@ namespace ModPos.TechnicalService.DataAccessLayer.Migrations
                     ServiceCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ServiceNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ServiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     ServiceDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ServiceStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ServiceTotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    ServiceStatus = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,7 +102,6 @@ namespace ModPos.TechnicalService.DataAccessLayer.Migrations
                     ProductQuantity = table.Column<int>(type: "int", nullable: false),
                     ServicePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Currency = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ServiceLineAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ServiceTransactionType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

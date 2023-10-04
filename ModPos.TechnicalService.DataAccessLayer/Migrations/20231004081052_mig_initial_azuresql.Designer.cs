@@ -12,8 +12,8 @@ using ModPos.TechnicalService.DataAccessLayer.Concrete;
 namespace ModPos.TechnicalService.DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230930143118_mig_initial_2")]
-    partial class mig_initial_2
+    [Migration("20231004081052_mig_initial_azuresql")]
+    partial class mig_initial_azuresql
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

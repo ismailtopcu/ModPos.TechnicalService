@@ -43,7 +43,7 @@
 					<td>@item.ServiceStatus</td>
 					<td><a type="button" class="btn btn-info" href="/ServiceMovements/ServiceMovementsList/@item.ServiceId">Hareketler</a></td>
 					<td><a href="/Services/deleteService/@item.ServiceId" class="btn btn-danger">Sil</a></td>
-					<td><a href="/Services/updateService/@item.ServiceId" class="btn btn-success">Güncelle</a></td>
+					<td><a href="/Services/updateService/@item.ServiceId?customerId=@item.Customer.CustomerId" class="btn btn-success">Güncelle</a></td>
 				</tr>
 			}
 		</tbody>

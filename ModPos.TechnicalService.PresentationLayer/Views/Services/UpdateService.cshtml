@@ -1,92 +1,96 @@
 ﻿@model UpdateServiceDto
 @{
-    ViewData["Title"] = "UpdateService";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "UpdateService";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="card-title">
-    <h4>Servis Güncelleme Sayfası</h4>
+	<h4>Servis Güncelleme Sayfası</h4>
 </div>
 <div class="card-body">
-    <div class="form-validation">
-        <form class="form-valide" method="post">
-            <div class="form-group row">
-                <input type="hidden" asp-for="ServiceId"/>
-                <input type="hidden" asp-for="ServiceDate"/>
-                <label class="col-lg-4 col-form-label" for="val-email">
-                    Servis Kodu
-                </label>
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" asp-for="ServiceCode" placeholder="Servis kodu giriniz..">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-4 col-form-label" for="val-currency">
-                    Servis Numarası
-                </label>
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" asp-for="ServiceNumber" placeholder="Servis numarası giriniz..">
-                </div>
-            </div>            
-            <div class="form-group row">
-                <label class="col-lg-4 col-form-label" for="val-currency">
-                    Müşteri
-                </label>
-                <div class="col-lg-6">
-                    <select class="form-control" id="CustomerIdSelect" name="CustomerId"></select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-4 col-form-label" for="val-currency">
-                    Servis Durumu
-                </label>
-                <div class="col-lg-6">
-                    <select class="form-control" id="ServiceStatus" name="ServiceStatus" asp-for="ServiceStatus">
-                        <option value="Kabul Edildi">Kabul Edildi</option>
-                        <option value="İşlem Yapılıyor">İşlem Yapılıyor</option>
-                        <option value="Tamamlandı">Tamamlandı</option>
-                    </select>
-                </div>
-            </div>
+	<div class="form-validation">
+		<form class="form-valide" method="post">
+			<div class="form-group row">
+				<input type="hidden" asp-for="ServiceId" />
+				<input type="hidden" asp-for="ServiceDate" />
+				<label class="col-lg-4 col-form-label" for="val-email">
+					Servis Kodu
+				</label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control" asp-for="ServiceCode" placeholder="Servis kodu giriniz..">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-4 col-form-label" for="val-currency">
+					Servis Numarası
+				</label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control" asp-for="ServiceNumber" placeholder="Servis numarası giriniz..">
+				</div>
+			</div>
+			@if (ViewBag.CustomerId == null)
+			{
+				<div class="form-group row">
+					<label class="col-lg-4 col-form-label" for="val-currency">
+						Müşteri
+					</label>
+					<div class="col-lg-6">
+						<select class="form-control" id="CustomerIdSelect" name="CustomerId"></select>
+					</div>
+				</div>
 
-            <div class="form-group row">
-                <label class="col-lg-4 col-form-label" for="val-currency">
-                    Servis Açıklaması
-                </label>
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" asp-for="ServiceDescription" placeholder="Servis açıklaması giriniz..">
-                </div>
-            </div>
+			}
+			<div class="form-group row">
+				<label class="col-lg-4 col-form-label" for="val-currency">
+					Servis Durumu
+				</label>
+				<div class="col-lg-6">
+					<select class="form-control" id="ServiceStatus" name="ServiceStatus" asp-for="ServiceStatus">
+						<option value="Kabul Edildi">Kabul Edildi</option>
+						<option value="İşlem Yapılıyor">İşlem Yapılıyor</option>
+						<option value="Tamamlandı">Tamamlandı</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-lg-4 col-form-label" for="val-currency">
+					Servis Açıklaması
+				</label>
+				<div class="col-lg-6">
+					<input type="text" class="form-control" asp-for="ServiceDescription" placeholder="Servis açıklaması giriniz..">
+				</div>
+			</div>
 
 
-            <div class="form-group row">
-                <div class="col-lg-8 ml-auto">
-                    <button class="btn btn-primary">Kaydet</button>
-                </div>
-            </div>
-        </form>
-    </div>
+			<div class="form-group row">
+				<div class="col-lg-8 ml-auto">
+					<button class="btn btn-primary">Kaydet</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "https://localhost:44301/api/Customers/GetAllCustomers",
-            dataType: "json",
-            success: function (customers) {
-                var selectElement = $("#CustomerIdSelect");
-                $.each(customers, function (index, customer) {
-                    selectElement.append($("<option>", {
-                        value: customer.customerId,
-                        text: customer.customerName+" "+ customer.customerSurname
-                    }));
-                });
-            },
-            error: function () {
-                console.error("Müşteriler alınamadı.");
-            }
-        });
-    });
+	$(document).ready(function () {
+		$.ajax({
+			type: "GET",
+			url: "https://localhost:44301/api/Customers/GetAllCustomers",
+			dataType: "json",
+			success: function (customers) {
+				var selectElement = $("#CustomerIdSelect");
+				$.each(customers, function (index, customer) {
+					selectElement.append($("<option>", {
+						value: customer.customerId,
+						text: customer.customerName + " " + customer.customerSurname
+					}));
+				});
+			},
+			error: function () {
+				console.error("Müşteriler alınamadı.");
+			}
+		});
+	});
 </script>
