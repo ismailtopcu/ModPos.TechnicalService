@@ -7,6 +7,8 @@ namespace ModPos.TechnicalService.DataAccessLayer.Abstract
     {
         Task<List<ResultServiceDto>> GetServiceList(int? customerId);
         Task<ResultServiceDto> GetServiceById(int id);
-    }
+        ServiceStatusCountDto GetStatusCount();
+
+	}
     
 }

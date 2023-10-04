@@ -39,7 +39,12 @@ namespace ModPos.TechnicalService.BusinessLayer.Concrete
             return await _serviceDal.GetServiceList(customerId);
         }
 
-        public async Task TInsertAsync(Service t)
+		public ServiceStatusCountDto TGetStatusCount()
+		{
+			return _serviceDal.GetStatusCount();
+		}
+
+		public async Task TInsertAsync(Service t)
         {
             await _serviceDal.InsertAsync(t);
         }

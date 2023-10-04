@@ -16,6 +16,7 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
 
         public async Task<IActionResult> ServiceMovementsList(int id)
         {
+            ViewBag.ServiceId=id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44301/api/ServiceMovements/GetServiceMovementsByServiceId?id="+id);
             if (responseMessage.IsSuccessStatusCode)
@@ -68,9 +69,13 @@ namespace ModPos.TechnicalService.PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateServiceMovements()
+        public IActionResult CreateServiceMovements(int? serviceId)
         {
-            return View();
+            CreateServiceMovementsDto value = new CreateServiceMovementsDto()
+            {
+                ServiceId = serviceId
+            };
+            return View(value);
         }
         [HttpPost]
         public async Task<IActionResult> CreateServiceMovements(CreateServiceMovementsDto createServiceMovementsDto)

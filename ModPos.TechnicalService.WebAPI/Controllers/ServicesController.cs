@@ -75,5 +75,11 @@ namespace ModPos.TechnicalService.WebAPI.Controllers
             await _serviceService.TUpdateAsync(value);
             return Ok();
         }
+        [HttpGet]
+        public IActionResult GetServiceStatus()
+        {
+           var values=  _serviceService.TGetStatusCount();
+            return Ok(values);
+        }
     }
 }

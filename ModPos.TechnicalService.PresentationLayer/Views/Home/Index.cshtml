@@ -1,3 +1,55 @@
-﻿@{
+﻿@model ServiceStatusCountDto
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-1">
+            <div class="card-body">
+                <h3 class="card-title text-white">Kabulde Bekleyen Servisler</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">@Model.AcceptedCount</h2>
+                    <a href="Products/ProductList" class="text-white mb-0">Ürünlere Git</a>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-2">
+            <div class="card-body">
+                <h3 class="card-title text-white">İşlem Yapılan Servisler</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">@Model.InProgressCount</h2>
+                    <a href="/Services/ServiceList" class="text-white mb-0">Servislere Git</a>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-3">
+            <div class="card-body">
+                <h3 class="card-title text-white">Tamamlanan Servisler</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">@Model.CompletedCount</h2>
+                    <a href="/Services/CreateService" class="text-white mb-0">Servis Oluştur</a>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-4">
+            <div class="card-body">
+                <h3 class="card-title text-white">Müşteri Sayımız</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">@Model.CustomerCount</h2>
+                    <a href="/Customers/CreateCustomer" class="text-white mb-0">Müşteri Oluştur</a>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+            </div>
+        </div>
+    </div>
+</div>

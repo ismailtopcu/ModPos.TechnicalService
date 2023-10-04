@@ -7,6 +7,7 @@ namespace ModPos.TechnicalService.BusinessLayer.Abstract
     {
         Task<List<ResultServiceDto>> TGetServiceList(int? customerId);
         Task<ResultServiceDto> TGetServiceById(int id);
+        ServiceStatusCountDto TGetStatusCount();
 
 
 	}

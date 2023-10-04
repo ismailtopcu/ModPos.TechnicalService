@@ -36,5 +36,20 @@ namespace ModPos.TechnicalService.DataAccessLayer.EntityFramework
             return result;
         }
 
+        public ServiceStatusCountDto GetStatusCount()
+        {
+            var acceptedCount =  _appDbContext.Services.Count(s => s.ServiceStatus == "Kabul Edildi");
+            var inProgressCount =  _appDbContext.Services.Count(s => s.ServiceStatus == "İşlem Yapılıyor");
+            var completedCount =  _appDbContext.Services.Count(s => s.ServiceStatus == "Tamamlandı");
+            var customerCount =  _appDbContext.Customers.Count();
+                
+            var values = new ServiceStatusCountDto
+            {
+                AcceptedCount = acceptedCount, InProgressCount = inProgressCount, CompletedCount = completedCount, CustomerCount = customerCount
+            };
+
+            return values;
+        }
+
     }
 }

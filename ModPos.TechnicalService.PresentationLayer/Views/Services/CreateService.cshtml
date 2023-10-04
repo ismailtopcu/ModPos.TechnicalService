@@ -76,7 +76,7 @@
 				$.each(customers, function (index, customer) {
 					selectElement.append($("<option>", {
 						value: customer.customerId,
-						text: customer.customerId + " " + customer.customerName + " " + customer.customerSurname
+						text: customer.customerId + "-" + customer.customerName + " " + customer.customerSurname
 					}));
 				});
 			},

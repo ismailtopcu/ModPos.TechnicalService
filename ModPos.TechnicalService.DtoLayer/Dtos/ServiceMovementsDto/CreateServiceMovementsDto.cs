@@ -2,7 +2,7 @@
 {
     public class CreateServiceMovementsDto
     {
-        public int ServiceId { get; set; }
+        public int? ServiceId { get; set; }
         public int ProductId { get; set; }
         public int ProductQuantity { get; set; }
         public decimal ServicePrice { get; set; }
